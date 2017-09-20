@@ -5,12 +5,12 @@ use FFmpex.Options
   @defaults %{quality: "22", start: "00:00:00", final: nil}
 
   @doc """
-    allows you to download video. \n
-    link- youtube link \n
-    quality- which video quality to download \n
-    start - video start (default- 00:00:00) \n
-    final - video end (default 00:00:00) \n
-    format - return format (webm, mp3, gif)
+    allows you to download video. 
+    link- youtube link 
+    format - return format (webm, mp3, gif) - optional (default is webm)
+    quality- which video quality to download - optional
+    start - video start (default- 00:00:00) - optional
+    final - video end (default 00:00:00)  - optional
   """
   def download(link, format \\ :webm, options \\ []) do
       %{quality: quality, start: start, final: final} = Enum.into(options, @defaults)
