@@ -19,7 +19,11 @@ use FFmpex.Options
 
   def get_quality(link) do
     {formats, 0} = System.cmd("youtube-dl", [link, "-F"])
-    formats |> String.split(["\n"])
+    formats
+      |> String.split("\n")
+      |> Enum.reject(fn(x) -> !Regex.match?(~r/^[0-9]/, x) end )
+      |> Enum.join("\n")
+      |> IO.puts
   end
 
   defp convert_video(file_location, start, final, format) do
