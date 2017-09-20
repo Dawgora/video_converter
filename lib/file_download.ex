@@ -53,4 +53,12 @@ use FFmpex.Options
       |> add_file_option(option_t(final))
   end
 
+    defp create_from_format(stuff, format, start, final) when format == :mp3 do
+      stuff
+      |> add_output_file(File.cwd! <> "/output/output.mp3")
+      |> add_file_option(option_ss(start))
+      |> add_file_option(option_t(final))
+      |> add_file_option(option_vn())
+  end
+
 end
